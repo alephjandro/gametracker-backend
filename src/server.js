@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import gamesRouter from "./routes/games.js";
+import reviewsRouter from "./routes/reviews.js";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/games", gamesRouter);
+app.use("/api/reviews", reviewsRouter);
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
