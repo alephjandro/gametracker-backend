@@ -3,12 +3,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-console.log('uri cargada') 
-process.env.MONGODB_URI
-
 const app = express()
 app.use(cors())
 app.use(express.json())
+const gamesRoutes = require('./routes/games')
+app.use('/api/juegos', gamesRoutes)
 
 app.get('/', (req, res) => 
 res.json({ message: '¡Bienvenido a GAMETRACKER API!' }))
