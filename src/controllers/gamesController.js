@@ -21,4 +21,17 @@ const createGame = async (req, res) => {
 
 };
 
-module.exports = { getAllGames, createGame };
+const getGameByID = async (req, res) => {
+    try {
+        const game = await Game.findById(req.params.id);
+        if (!game) {
+            return res.status(404).json({ message: 'Juego no encontrado' })
+        }
+        res.json(game);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener el juego' });
+    }
+};
+
+
+module.exports = { getAllGames, createGame, getGameByID };
