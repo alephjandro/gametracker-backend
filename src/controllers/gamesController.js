@@ -33,5 +33,17 @@ const getGameByID = async (req, res) => {
     }
 };
 
+const updateGame = async (req, res) => {
+    try {
+        const updatedGame = await Game.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedGame) {
+            return res.status(404).json({ message: 'Juego no encontrado' });
+        }
+        res.json(updatedGame);
+    } catch (error) {
+        res.status(400).json({ message: 'Error al actualizar el juego' });
+    }
+};
 
-module.exports = { getAllGames, createGame, getGameByID };
+
+module.exports = { getAllGames, createGame, getGameByID, updateGame };
