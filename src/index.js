@@ -7,9 +7,9 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 const gamesRoutes = require('./routes/games')
-const reviewsRoutes = require('./routes/review') 
+const reviewsRoutes = require('./routes/reviews') 
 app.use('/api/juegos', gamesRoutes)
-app.use('/api/resenas', reviewsRoutes) 
+app.use('/api/reviews', reviewsRoutes) 
 
 app.get('/', (req, res) => 
 res.json({ message: '¡Bienvenido a GAMETRACKER API!' }))
